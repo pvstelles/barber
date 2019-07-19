@@ -1,13 +1,17 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <nav-sup></nav-sup>
+    <div class="container-fluid" style="height: calc(100% - 56px)">
+      <router-view/>
+    </div>
   </div>
 </template>
 
 <script>
+import NavSup from '@/components/NavSupComponent.vue'
 export default {
-  name: 'App'
+  name: 'App',
+  components: { NavSup }
 }
 </script>
 
@@ -16,8 +20,8 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  height: 100vh;
+  overflow: hidden;
 }
 </style>
