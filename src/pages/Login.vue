@@ -5,15 +5,15 @@
                 <h3 class="card-title text-center">Login</h3>
                 <form action="">
                     <div class="form-group">
-                        <label for="email">Usuário</label>
-                        <input type="text" name="email" id="email" class="form-control">
+                        <label>Usuário</label>
+                        <input type="text" class="form-control" v-model="credentials.email">
                     </div>
                     <div class="form-group">
-                        <label for="password">Senha</label>
-                        <input type="password" name="password" id="password" class="form-control">
+                        <label>Senha</label>
+                        <input type="password" class="form-control" v-model="credentials.password">
                     </div>
                     <div class="form-group">
-                        <router-link to="/home" class="btn btn-primary">Entrar</router-link>
+                        <button @click="login" class="btn btn-primary">Entrar</button>
                         <button class="btn btn-link">Esqueci minha senha</button>
                     </div>
                 </form>
@@ -22,7 +22,26 @@
     </div>
 </template>
 <script>
+import http from '@/services/http'
+
 export default {
-  name: 'login'
+  name: 'login',
+  data () {
+    return {
+      credentials: {
+        email: 'pvstelles@gmail.com',
+        password: 'secret123'
+      }
+    }
+  },
+  methods: {
+    login () {
+      http.post('/api/login', this.credentials)
+        .then(response => {
+          sessionStorage.setItem('token', response.data)
+          this.$router.push('/')
+        })
+    }
+  }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <nav-sup></nav-sup>
-    <div class="container-fluid" style="height: calc(100% - 56px)">
+    <div class="container-fluid" style="margin-top: 80px;">
       <router-view/>
     </div>
   </div>
@@ -21,7 +21,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  height: 100vh;
   overflow: hidden;
 }
 </style>

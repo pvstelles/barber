@@ -3,7 +3,7 @@
         <div class="col-12 mt-3">
             <card-menu class="text-center">
                 <font-awesome-icon icon="clock" class="icon-card mt-1"/>
-                <router-link to="/" class="mt-2 btn btn-default"><strong>Agendamento</strong></router-link>
+                <router-link to="/schedules" class="mt-2 btn btn-default"><strong>Agendamento</strong></router-link>
             </card-menu>
         </div>
         <div class="col-6 mt-3">
@@ -15,13 +15,13 @@
         <div class="col-6 mt-3">
             <card-menu class="text-center">
                 <font-awesome-icon icon="id-card-alt" class="icon-card mt-1"/>
-                <router-link to="/" class="mt-2 btn btn-default"><strong>Clientes</strong></router-link>
+                <router-link to="/clients" class="mt-2 btn btn-default"><strong>Clientes</strong></router-link>
             </card-menu>
         </div>
         <div class="col-6 mt-3">
             <card-menu class="text-center">
                 <font-awesome-icon icon="tasks" class="icon-card mt-1"/>
-                <router-link to="/" class="mt-2 btn btn-default"><strong>Serviços</strong></router-link>
+                <router-link to="/services" class="mt-2 btn btn-default"><strong>Serviços</strong></router-link>
             </card-menu>
         </div>
         <div class="col-6 mt-3">
@@ -41,6 +41,6 @@ export default {
 </script>
 <style>
 .icon-card {
-    font-size: 100px;
+    font-size: 90px;
 }
 </style>
