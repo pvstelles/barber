@@ -19,18 +19,19 @@ const isLogged = (to, from, next) => {
   let token = sessionStorage.getItem('token')
   if (!token) {
     next('/login')
+  }else {
+    store.commit('setToken', true)
+    next()
   }
-  store.commit('setToken', true)
-  next()
 }
 
 const notLogged = (to, from, next) => {
   let token = sessionStorage.getItem('token')
-  if (token) {
-    store.commit('setToken', false)
+  if (!token) {
+      next()
+  }else {
     next('/')
   }
-  next()
 }
 
 export default new Router({

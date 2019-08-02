@@ -7,11 +7,11 @@
                 </div>
                 <div class="form-group">
                     <label>Nome:</label>
-                    <p><strong>Paulo Victor de Souza Telles</strong></p>
+                    <p><strong>{{ client.name }}</strong></p>
                 </div>
                 <div class="form-group">
                     <label>Tel:</label>
-                    <p><strong>(24) 99936-4821</strong></p>
+                    <p><strong>{{ this.client.phone }}</strong></p>
                 </div>
                 <div class="form-group">
                     <button class="btn btn-outline-dark">Editar</button>
@@ -48,6 +48,7 @@
 </template>
 <script>
 export default {
-  name: 'client-info'
+  name: 'client-info',
+  props: ['client']
 }
 </script>

@@ -1,5 +1,7 @@
 const state = {
-  isLogged: false
+  isLogged: false,
+  clients: [],
+  client: {}
 }
 
 export default state

@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-12">
                 <h1 class="float-left"><strong>Serviços</strong></h1>
-                <router-link class="btn btn-outline-dark float-right" to="/home">Voltar</router-link>
+                <router-link class="btn btn-outline-dark float-right" to="/">Voltar</router-link>
             </div>
             <div class="col-12">
                 <router-link class="btn btn-success mt-3" to="/services/create">Add</router-link>
