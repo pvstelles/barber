@@ -38,8 +38,13 @@ export default {
     login () {
       http.post('/api/login', this.credentials)
         .then(response => {
-          sessionStorage.setItem('token', response.data)
-          this.$router.push('/')
+          console.log(response.data)
+          if (response.data.status) {
+            sessionStorage.setItem('token', response.data.token)
+            this.$router.push('/')
+          } else {
+            alert("Login ou senha invalido!")
+          }
         })
     }
   }

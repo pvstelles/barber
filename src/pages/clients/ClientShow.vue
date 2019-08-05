@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-12">
                 <h1 class="float-left"><strong>Cliente</strong></h1>
-                <router-link to="/" class="float-right btn btn-outline-dark">Voltar</router-link>
+                <router-link to="/clients" class="float-right btn btn-outline-dark">Voltar</router-link>
             </div>
             <div class="col-12">
                 <client-info :client="getClient"></client-info>
@@ -22,9 +22,9 @@ export default {
     store.dispatch('getClient', id)
   },
   computed: {
-      getClient () {
-          return store.state.client
-      }
+    getClient () {
+      return store.state.client
+    }
   }
 }
 </script>

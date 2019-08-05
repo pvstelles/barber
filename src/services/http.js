@@ -1,10 +1,11 @@
 import axios from 'axios'
 
 const http = axios.create({
-  baseURL: 'http://localhost:8000',
+  baseURL: 'http://barberApi.test',
   headers: {
-    'accept': 'application/json',
-    'Authorization': 'Bearer ' + sessionStorage.getItem('token')
+    'Accept': 'application/json',
+    'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+    'Access-Control-Allow-Origin': '*'
   }
 })
 // http.defaults.baseURL = 'https://api.example.com'

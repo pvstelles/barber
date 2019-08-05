@@ -8,17 +8,7 @@
             <div class="col-12 mt-5">
                 <div class="card">
                     <div class="card-body text-center">
-                        <h1>Serviço ({{ id }})</h1>
-                        <div class="text-left mt-5 vl-service">
-                            <label for=""><strong>Valor:</strong></label>
-                            <p class="text-info"><strong>R$ 15,00</strong></p>
-                        </div>
-                        <div class="w-100 mt-3 text-left">
-                            <button class="btn btn-primary">Editar</button>
-                            <router-link class="btn btn-outline-primary" to="/services">
-                                Voltar
-                            </router-link>
-                        </div>
+                        <service-info :service="this.getService"></service-info>
                     </div>
                 </div>
             </div>
@@ -26,8 +16,11 @@
     </span>
 </template>
 <script>
+import store from '@/store'
+import ServiceInfo from '@/components/ServiceInfoComponent'
 export default {
   name: 'service-show',
+  components: { ServiceInfo },
   data () {
     return {
       id: ''
@@ -35,7 +28,12 @@ export default {
   },
   created () {
     this.id = this.$route.params.id
-    console.log(this.id)
+    store.dispatch('getService', this.id)
+  },
+  computed: {
+    getService () {
+      return store.state.service
+    }
   }
 }
 </script>

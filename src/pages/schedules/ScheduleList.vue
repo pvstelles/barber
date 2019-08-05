@@ -38,6 +38,7 @@
     </span>
 </template>
 <script>
+import store from '@/store'
 var moment = require('moment')
 export default {
   name: 'schedule-list',
@@ -50,6 +51,9 @@ export default {
     dtInicio () {
       return this.dtNow
     }
+  },
+  created () {
+    store.dispatch('getSchedule', {schedule_at: this.dtNow})
   }
 }
 </script>

@@ -11,6 +11,9 @@ import ScheduleCreate from '@/pages/schedules/ScheduleCreate.vue'
 import ServiceList from '@/pages/services/ServiceList.vue'
 import ServiceCreate from '@/pages/services/ServiceCreate.vue'
 import ServiceShow from '@/pages/services/ServiceShow.vue'
+import UserList from '@/pages/users/UserList.vue'
+import UserCreate from '@/pages/users/UserCreate.vue'
+import UserShow from '@/pages/users/UserShow.vue'
 import store from '@/store'
 
 Vue.use(Router)
@@ -19,7 +22,7 @@ const isLogged = (to, from, next) => {
   let token = sessionStorage.getItem('token')
   if (!token) {
     next('/login')
-  }else {
+  } else {
     store.commit('setToken', true)
     next()
   }
@@ -28,8 +31,8 @@ const isLogged = (to, from, next) => {
 const notLogged = (to, from, next) => {
   let token = sessionStorage.getItem('token')
   if (!token) {
-      next()
-  }else {
+    next()
+  } else {
     next('/')
   }
 }
@@ -95,6 +98,24 @@ export default new Router({
       path: '/services/:id',
       name: 'ServiceShow',
       component: ServiceShow,
+      beforeEnter: multiGuard([isLogged])
+    },
+    {
+      path: '/users',
+      name: 'UserList',
+      component: UserList,
+      beforeEnter: multiGuard([isLogged])
+    },
+    {
+      path: '/users/create',
+      name: 'UserCreate',
+      component: UserCreate,
+      beforeEnter: multiGuard([isLogged])
+    },
+    {
+      path: '/users/:id',
+      name: 'UserShow',
+      component: UserShow,
       beforeEnter: multiGuard([isLogged])
     }
   ]

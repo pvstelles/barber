@@ -34,12 +34,12 @@ import store from '@/store'
 export default {
   name: 'client',
   created () {
-      store.dispatch('getClients')
+    store.dispatch('getClients')
   },
   computed: {
-      getClients () {
-          return store.state.clients
-      }
+    getClients () {
+      return store.state.clients
+    }
   }
 }
 </script>

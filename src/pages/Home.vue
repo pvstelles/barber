@@ -6,7 +6,7 @@
                 <span class="mt-2 btn btn-default"><strong>Agendamento</strong></span>
             </card-menu>
         </div>
-        <div class="col-6 mt-3 go-card" @click="go('/clients')">
+        <div class="col-6 mt-3 go-card" @click="go('/users')">
             <card-menu class="text-center">
                 <font-awesome-icon icon="user-alt" class="icon-card mt-1"/>
                 <span class="mt-2 btn btn-default"><strong>Usuários</strong></span>

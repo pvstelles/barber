@@ -18,11 +18,11 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr :key="x" v-for="x in 5">
-                        <td>Serviço ({{ x }})</td>
-                        <td>R$ 15,00</td>
+                    <tr :key="service.id" v-for="service in getServices">
+                        <td>{{ service.name }}</td>
+                        <td>R$ {{ service.price }}</td>
                         <td class="text-center">
-                            <router-link :to="'/services/' + x">
+                            <router-link :to="'/services/' + service.id">
                                 <font-awesome-icon icon="bars" class="icon-table"></font-awesome-icon>
                             </router-link>
                         </td>
@@ -34,8 +34,17 @@
     </span>
 </template>
 <script>
+import store from '@/store'
 export default {
-  name: 'service-list'
+  name: 'service-list',
+  created () {
+    store.dispatch('getServices')
+  },
+  computed: {
+    getServices () {
+      return store.state.services
+    }
+  }
 }
 </script>
 <style>

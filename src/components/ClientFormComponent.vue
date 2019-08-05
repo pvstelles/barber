@@ -22,16 +22,16 @@ import store from '@/store'
 export default {
   name: 'client-form',
   data () {
-      return {
-          client: {
-              name: '',
-              phone: '',
-          }
+    return {
+      client: {
+        name: '',
+        phone: ''
       }
+    }
   },
   methods: {
     addClient () {
-        store.dispatch('addClient', this.client)
+      store.dispatch('addClient', this.client)
     }
   }
 }

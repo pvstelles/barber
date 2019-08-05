@@ -11,7 +11,7 @@
             </div>
             <div class="form-group">
                 <label>Cliente:</label>
-                <select name="" id="" class="form-control">
+                <select class="form-control">
                     <option :key="x" v-for="x in 5" value="">Paulo Victor ({{x}})</option>
                 </select>
             </div>
@@ -19,14 +19,14 @@
                 <label>Horario:</label>
                 <input type="date" class="form-control mb-2" :value="dia">
                 <select class="form-control" :model="this.hora">
-                    <option value="" v-for="h in this.horaAux" :selected="h == hora">
+                    <option :key="h" v-for="h in this.horaAux" :selected="h == hora">
                         {{ h }}
                     </option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="">Serviço</label>
-                <select name="" id="" class="form-control">
+                <select class="form-control">
                     <option value="">Corte Cabelo</option>
                     <option value="">Barba</option>
                 </select>

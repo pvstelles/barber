@@ -1,7 +1,11 @@
 const state = {
   isLogged: false,
   clients: [],
-  client: {}
+  client: {},
+  services: [],
+  service: {},
+  users: [],
+  user: {}
 }
 
 export default state

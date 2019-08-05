@@ -10,6 +10,18 @@ const mutations = {
   },
   setClientToClients (state, client) {
     state.clients.push(client)
+  },
+  setServices (state, services) {
+    state.services = services
+  },
+  setService (state, service) {
+    state.service = service
+  },
+  setUsers (state, users) {
+    state.users = users
+  },
+  setUser (state, user) {
+    state.user = user
   }
 }
 
