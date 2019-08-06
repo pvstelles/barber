@@ -39,7 +39,7 @@
 </template>
 <script>
 import store from '@/store'
-var moment = require('moment')
+var moment = require('moment-timezone')
 export default {
   name: 'schedule-list',
   data () {
@@ -53,7 +53,7 @@ export default {
     }
   },
   created () {
-    store.dispatch('getSchedule', {schedule_at: this.dtNow})
+    store.dispatch('getSchedules', {schedule_at: moment().clone().format('YYYY-MM-DD')})
   }
 }
 </script>
