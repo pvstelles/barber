@@ -1,12 +1,24 @@
 import axios from 'axios'
 
 const http = axios.create({
-  baseURL: 'http://barberApi.test',
+  baseURL: 'http://localhost:8000',
   headers: {
     'Accept': 'application/json',
-    'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
     'Access-Control-Allow-Origin': '*'
   }
+})
+
+http.interceptors.request.use(function (config) {
+    const token = sessionStorage.getItem('token')
+    console.log(token)
+
+    if (token != null) {
+        config.headers.Authorization = `Bearer ${token}`
+    }
+
+    return config
+}, function (err) {
+    return Promise.reject(err)
 })
 // http.defaults.baseURL = 'https://api.example.com'
 // http.defaults.headers.common['Authorization'] = AUTH_TOKEN;

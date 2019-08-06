@@ -1,10 +1,22 @@
 import http from '@/services/http'
 import router from '@/router'
 
+const unauthenticated  = (data) => {
+    if(data.message == 'Unauhenticated.') {
+      sessionStorage.removeItem('token')
+        router.push('/login')
+        return false
+    }
+    return true
+}
+
 const actions = {
   getClients (store) {
     http.get('/api/costumers').then(response => {
-      store.commit('setClientsStore', response.data)
+        store.commit('setClientsStore', response.data)
+    }).catch(response => {
+      sessionStorage.removeItem('token')
+      router.push('/login')
     })
   },
   getClient (store, id) {
