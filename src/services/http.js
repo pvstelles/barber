@@ -9,16 +9,16 @@ const http = axios.create({
 })
 
 http.interceptors.request.use(function (config) {
-    const token = sessionStorage.getItem('token')
-    console.log(token)
+  const token = sessionStorage.getItem('token')
+  console.log(token)
 
-    if (token != null) {
-        config.headers.Authorization = `Bearer ${token}`
-    }
+  if (token != null) {
+    config.headers.Authorization = `Bearer ${token}`
+  }
 
-    return config
+  return config
 }, function (err) {
-    return Promise.reject(err)
+  return Promise.reject(err)
 })
 // http.defaults.baseURL = 'https://api.example.com'
 // http.defaults.headers.common['Authorization'] = AUTH_TOKEN;
