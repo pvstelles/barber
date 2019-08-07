@@ -1,14 +1,18 @@
 import http from '@/services/http'
 import router from '@/router'
 
+const unauthenticated  = (data) => {
+    sessionStorage.removeItem('token')
+    router.push('/login')
+}
+
 const actions = {
   getClients (store) {
     http.get('/api/costumers').then(response => {
       store.commit('setClientsStore', response.data)
     })
         .catch(response => {
-      sessionStorage.removeItem('token')
-      router.push('/login')
+      unauthenticated(response.data)
     })
   },
   getClient (store, id) {
@@ -23,7 +27,6 @@ const actions = {
   },
   editClient (store, client) {
     http.put('/api/costumers/' + client.id, client).then(response => {
-      console.log(response.data)
     })
   },
   getServices (store) {
@@ -52,6 +55,8 @@ const actions = {
   getUsers (store) {
     http.get('/api/users').then(response => {
       store.commit('setUsers', response.data)
+    }).catch(response => {
+      unauthenticated(response.data)
     })
   },
   getUser (store, id) {

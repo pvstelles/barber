@@ -2,7 +2,7 @@
     <span>
         <div class="row">
             <div class="col-12">
-                <h1><strong>Agendamentos</strong></h1>
+                <h1><strong>Agendamentos</strong></h1><button @click="teste">teste</button>
             </div>
             <div class="col-12">
                 <div class="form-group">
@@ -19,17 +19,17 @@
                 <input type="date" class="form-control">
                 </span>
             </div>
-            <div class="col-12" :key="x" v-for="x in 20" style="vertical-align: top">
+            <div class="col-12" :key="h.hora" v-for="h in horario" style="vertical-align: top">
                 <hr>
-                {{ dtInicio.add(30, 'm').format('HH:mm') }}
-                <div v-if="x%3 == 0" class="flex-wrap d-flex align-items-center justify-content-center  ">
+                {{ h.hora }}
+                <div v-if="h.schedule" class="flex-wrap d-flex align-items-center justify-content-center  ">
                     <span>
                         <strong>Paulo Victor - Corte</strong>
                     </span>
                     <font-awesome-icon icon="minus-circle" class="text-danger ml-5 icone-action"/>
                 </div>
                 <div class="flex-wrap d-flex align-items-center justify-content-center" v-else>
-                    <router-link :to="'/schedules/create/' + dtInicio.format('YYYY-MM-DD_HH:mm')">
+                    <router-link :to="'/schedules/create/' + dtInicio.format('YYYY-MM-DD') + '_' + h.hora">
                         <font-awesome-icon icon="plus-circle" class="text-success ml-5 icone-action"/>
                     </router-link>
                 </div>
@@ -44,16 +44,49 @@ export default {
   name: 'schedule-list',
   data () {
     return {
-      dtNow: moment('08:30', 'HH:mm')
+      dtNow: moment('08:30', 'HH:mm'),
+      horario: [{hora:'09:00',schedule: null},{hora:'09:30',schedule: null},{hora:'10:00',schedule: null},{hora:'10:30',schedule: null},{hora:'11:00',schedule: null},{hora:'11:30',schedule: null},{hora:'12:00',schedule: null},{hora:'12:30',schedule: null},{hora:'13:00',schedule: null},{hora:'13:30',schedule: null},{hora:'14:00',schedule: null},{hora:'14:30',schedule: null},{hora:'15:00',schedule: null},{hora:'15:30',schedule: null},{hora:'16:00',schedule: null},{hora:'16:30',schedule: null},{hora:'17:00',schedule: null},{hora:'17:30',schedule: null},{hora:'18:00',schedule: null}]
     }
   },
   computed: {
     dtInicio () {
       return this.dtNow
+    },
+    schedules () {
+        store.state.schedules.forEach((schedule) => {
+            console.log(moment(schedule.schedule_at))
+            // this.horario.indexOf({hora:moment(schedule)})
+        })
+        return store.state.schedules
     }
   },
-  created () {
+  mounted () {
     store.dispatch('getSchedules', {schedule_at: moment().clone().format('YYYY-MM-DD')})
+
+  },
+  methods: {
+      teste () {
+
+          store.state.schedules.forEach((schedule) => {
+
+             var pos = this.horario.map((h) => {
+                          return h.hora
+                      }).indexOf(moment(schedule.schedule_at).format('HH:mm'))
+              if(pos > -1){
+                 this.horario[pos].schedule = schedule
+                  console.log(this.horario[pos])
+              }
+          })
+
+
+          // this.horario.forEach((h) => {
+          //
+          //     store.state.schedules.forEach((schedule) => {
+          //         console.log(moment(schedule.schedule_at).format('HH:mm'), h.hora)
+          //         //return moment(schedule.schedule_at).format('HH:mm')
+          //     })
+          // })
+      }
   }
 }
 </script>
