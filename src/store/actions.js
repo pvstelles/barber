@@ -1,20 +1,12 @@
 import http from '@/services/http'
 import router from '@/router'
-const moment = require('moment-timezone')
-const unauthenticated  = (data) => {
-    if(data.message == 'Unauhenticated.') {
-      sessionStorage.removeItem('token')
-        router.push('/login')
-        return false
-    }
-    return true
-}
 
 const actions = {
   getClients (store) {
     http.get('/api/costumers').then(response => {
-        store.commit('setClientsStore', response.data)
-    }).catch(response => {
+      store.commit('setClientsStore', response.data)
+    })
+        .catch(response => {
       sessionStorage.removeItem('token')
       router.push('/login')
     })
@@ -80,8 +72,12 @@ const actions = {
     http.post('/api/schedules', schedules).then(response => {
       store.commit('setSchedules', response.data)
     })
+  },
+  addSchedule (store, schedule) {
+    http.post('/api/schedules/store', schedule).then(response => {
+      console.log(response.data)
+    })
   }
-
 }
 
 export default actions

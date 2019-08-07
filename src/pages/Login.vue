@@ -43,7 +43,7 @@ export default {
             sessionStorage.setItem('token', response.data.token)
             this.$router.push('/')
           } else {
-            alert("Login ou senha invalido!")
+            alert('Login ou senha invalido!')
           }
         })
     }
