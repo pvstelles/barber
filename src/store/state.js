@@ -6,7 +6,8 @@ const state = {
   service: {},
   users: [],
   user: {},
-  schedules: []
+  schedules: [],
+  me: ''
 }
 
 export default state

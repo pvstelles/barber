@@ -73,6 +73,9 @@ const actions = {
     http.put('/api/users/' + user.id, user).then(response => {
     })
   },
+  getMe (store) {
+    http.get('/api/me').then(response => console.log(response.data))
+  },
   getSchedules (store, schedules) {
     http.post('/api/schedules', schedules).then(response => {
       store.commit('setSchedules', response.data)

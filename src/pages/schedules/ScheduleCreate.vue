@@ -17,8 +17,8 @@
                 <label>Horario:</label>
                 <input type="date" class="form-control mb-2" v-model="schedule.dia">
                 <select class="form-control" v-model="schedule.hora">
-                    <option :key="h" v-for="h in this.horaAux" :value="h">
-                        {{ h }}
+                    <option :key="h.hora" v-for="h in this.horaAux" :value="h.hora">
+                        {{ h.hora }}
                     </option>
                 </select>
             </div>
@@ -43,7 +43,7 @@ export default {
   data () {
     return {
       horario: '',
-      horaAux: [],
+      horaAux: [{hora:'09:00',schedule: null},{hora:'09:30',schedule: null},{hora:'10:00',schedule: null},{hora:'10:30',schedule: null},{hora:'11:00',schedule: null},{hora:'11:30',schedule: null},{hora:'12:00',schedule: null},{hora:'12:30',schedule: null},{hora:'13:00',schedule: null},{hora:'13:30',schedule: null},{hora:'14:00',schedule: null},{hora:'14:30',schedule: null},{hora:'15:00',schedule: null},{hora:'15:30',schedule: null},{hora:'16:00',schedule: null},{hora:'16:30',schedule: null},{hora:'17:00',schedule: null},{hora:'17:30',schedule: null},{hora:'18:00',schedule: null}],
       hora: '',
       schedule: {
         user_id: '',
@@ -66,17 +66,16 @@ export default {
     },
     services () {
       return store.state.services
+    },
+    me () {
+      return store.state.me
     }
   },
   created () {
     this.horario = moment(this.$route.params.horario.replace('_', ' '))
-    var aux = moment('09:00', 'HH:mm')
-    for (let x = 0; x < 20; x++) {
-      this.horaAux.push(aux.format('HH:mm'))
-      aux.add(30, 'm')
-    }
     this.schedule.hora = this.horario.format('HH:mm')
     this.schedule.dia = this.horario.format('YYYY-MM-DD')
+    store.dispatch('getMe')
     store.dispatch('getUsers')
     store.dispatch('getClients')
     store.dispatch('getServices')

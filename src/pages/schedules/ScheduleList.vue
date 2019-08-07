@@ -2,7 +2,7 @@
     <span>
         <div class="row">
             <div class="col-12">
-                <h1><strong>Agendamentos</strong></h1><button @click="teste">teste</button>
+                <h1><strong>Agendamentos</strong></h1>
             </div>
             <div class="col-12">
                 <div class="form-group">
@@ -19,7 +19,7 @@
                 <input type="date" class="form-control">
                 </span>
             </div>
-            <div class="col-12" :key="h.hora" v-for="h in horario" style="vertical-align: top">
+            <div class="col-12" :key="h.hora" v-for="h in schedules" style="vertical-align: top">
                 <hr>
                 {{ h.hora }}
                 <div v-if="h.schedule" class="flex-wrap d-flex align-items-center justify-content-center  ">
@@ -53,40 +53,23 @@ export default {
       return this.dtNow
     },
     schedules () {
-        store.state.schedules.forEach((schedule) => {
-            console.log(moment(schedule.schedule_at))
-            // this.horario.indexOf({hora:moment(schedule)})
-        })
-        return store.state.schedules
+      store.state.schedules.forEach((schedule) => {
+
+        var pos = this.horario.map((h) => {
+          return h.hora
+        }).indexOf(moment(schedule.schedule_at).format('HH:mm'))
+        if (pos > -1) {
+          this.horario[pos].schedule = schedule
+          console.log(this.horario[pos])
+        }
+      })
+      return this.horario
     }
   },
   mounted () {
+    store.dispatch('getUsers')
+    store.dispatch('getMe')
     store.dispatch('getSchedules', {schedule_at: moment().clone().format('YYYY-MM-DD')})
-
-  },
-  methods: {
-      teste () {
-
-          store.state.schedules.forEach((schedule) => {
-
-             var pos = this.horario.map((h) => {
-                          return h.hora
-                      }).indexOf(moment(schedule.schedule_at).format('HH:mm'))
-              if(pos > -1){
-                 this.horario[pos].schedule = schedule
-                  console.log(this.horario[pos])
-              }
-          })
-
-
-          // this.horario.forEach((h) => {
-          //
-          //     store.state.schedules.forEach((schedule) => {
-          //         console.log(moment(schedule.schedule_at).format('HH:mm'), h.hora)
-          //         //return moment(schedule.schedule_at).format('HH:mm')
-          //     })
-          // })
-      }
   }
 }
 </script>
