@@ -43,7 +43,84 @@ export default {
   data () {
     return {
       horario: '',
-      horaAux: [{hora:'09:00',schedule: null},{hora:'09:30',schedule: null},{hora:'10:00',schedule: null},{hora:'10:30',schedule: null},{hora:'11:00',schedule: null},{hora:'11:30',schedule: null},{hora:'12:00',schedule: null},{hora:'12:30',schedule: null},{hora:'13:00',schedule: null},{hora:'13:30',schedule: null},{hora:'14:00',schedule: null},{hora:'14:30',schedule: null},{hora:'15:00',schedule: null},{hora:'15:30',schedule: null},{hora:'16:00',schedule: null},{hora:'16:30',schedule: null},{hora:'17:00',schedule: null},{hora:'17:30',schedule: null},{hora:'18:00',schedule: null}],
+      horaAux: [
+        {
+          hora: '09:00',
+          schedule: null
+        },
+        {
+          hora: '09:30',
+          schedule: null
+        },
+        {
+          hora: '10:00',
+          schedule: null
+        },
+        {
+          hora: '10:30',
+          schedule: null
+        },
+        {
+          hora: '11:00',
+          schedule: null
+        },
+        {
+          hora: '11:30',
+          schedule: null
+        },
+        {
+          hora: '12:00',
+          schedule: null
+        },
+        {
+          hora: '12:30',
+          schedule: null
+        },
+        {
+          hora: '13:00',
+          schedule: null
+        },
+        {
+          hora: '13:30',
+          schedule: null
+        },
+        {
+          hora: '14:00',
+          schedule: null
+        },
+        {
+          hora: '14:30',
+          schedule: null
+        },
+        {
+          hora: '15:00',
+          schedule: null
+        },
+        {
+          hora: '15:30',
+          schedule: null
+        },
+        {
+          hora: '16:00',
+          schedule: null
+        },
+        {
+          hora: '16:30',
+          schedule: null
+        },
+        {
+          hora: '17:00',
+          schedule: null
+        },
+        {
+          hora: '17:30',
+          schedule: null
+        },
+        {
+          hora: '18:00',
+          schedule: null
+        }
+      ],
       hora: '',
       schedule: {
         user_id: '',
