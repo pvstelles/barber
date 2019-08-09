@@ -2,11 +2,17 @@ import axios from 'axios'
 import route from '@/router'
 
 const http = axios.create({
-  baseURL: 'http://localhost:8000',
+  baseURL: 'http://pvstelles-com-br.umbler.net/',
   headers: {
     'Accept': 'application/json',
     'Access-Control-Allow-Origin': '*'
-  }
+  },
+  host: '192.168.1.3',
+  proxy: {
+      host: '192.168.1.3',
+      port: 3128
+  },
+  crossDomain: true
 })
 
 http.interceptors.request.use(function (config) {
