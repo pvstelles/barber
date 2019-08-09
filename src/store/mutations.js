@@ -26,6 +26,9 @@ const mutations = {
   setSchedules (state, schedules) {
     state.schedules = schedules
   },
+  setSchedule (state, schedule) {
+    state.schedule = schedule
+  },
   setMe (state, me) {
     state.me = me
   }

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import route from '@/router'
 
 const http = axios.create({
   baseURL: 'http://localhost:8000',
@@ -10,13 +11,14 @@ const http = axios.create({
 
 http.interceptors.request.use(function (config) {
   const token = sessionStorage.getItem('token')
-  console.log(token)
 
   if (token != null) {
     config.headers.Authorization = `Bearer ${token}`
+  } else if (route.history.current.name !== 'Login') {
+    route.push('/login')
   }
-
   return config
+
 }, function (err) {
   return Promise.reject(err)
 })

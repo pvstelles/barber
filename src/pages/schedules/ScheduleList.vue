@@ -17,26 +17,13 @@
                 <input type="date" class="form-control" v-model="schedule_at.bd" @change="getSchedule">
                 </span>
             </div>
-            <div class="col-12" :key="h.hora" v-for="h in schedules" style="vertical-align: top">
-                <hr>
-                {{ h.hora }}
-                <div v-if="h.schedule" class="flex-wrap d-flex align-items-center justify-content-center  ">
-                    <span>
-                        <strong>{{ h.schedule.customer.name }} - {{h.schedule.service.name}}</strong>
-                    </span>
-                    <font-awesome-icon icon="minus-circle" class="text-danger ml-5 icone-action"/>
-                </div>
-                <div class="flex-wrap d-flex align-items-center justify-content-center" v-else>
-                    <router-link :to="'/schedules/create/' + dtInicio.format('YYYY-MM-DD') + '_' + h.hora">
-                        <font-awesome-icon icon="plus-circle" class="text-success ml-5 icone-action"/>
-                    </router-link>
-                </div>
-            </div>
+            <schedule-info :key="h.hora" v-for="h in schedules" :h="h"></schedule-info>
         </div>
     </span>
 </template>
 <script>
 import store from '@/store'
+import ScheduleInfo from '@/components/ScheduleInfoComponent'
 var moment = require('moment-timezone')
 export default {
   name: 'schedule-list',
@@ -123,11 +110,12 @@ export default {
       ],
       userS: '',
       schedule_at: {
-          bd: '',
-          print: ''
+        bd: '',
+        print: ''
       }
     }
   },
+  components: { ScheduleInfo },
   computed: {
     dtInicio () {
       return this.dtNow
@@ -164,11 +152,11 @@ export default {
     store.dispatch('getSchedules', {schedule_at: moment().clone().format('YYYY-MM-DD'), user: this.userS})
   },
   methods: {
-      getSchedule () {
-          store.dispatch('getSchedules', {schedule_at: this.schedule_at.bd, user: this.userS})
-      },
-      resetHorario () {
-          this.horario = [
+    getSchedule () {
+      store.dispatch('getSchedules', {schedule_at: this.schedule_at.bd, user: this.userS})
+    },
+    resetHorario () {
+      this.horario = [
               {
                   hora: '09:00',
                   schedule: null
@@ -246,7 +234,7 @@ export default {
                   schedule: null
               }
           ]
-      }
+    }
   }
 }
 </script>

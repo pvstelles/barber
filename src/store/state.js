@@ -7,6 +7,7 @@ const state = {
   users: [],
   user: {},
   schedules: [],
+  schedule: {},
   me: ''
 }
 

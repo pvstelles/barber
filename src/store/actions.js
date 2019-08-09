@@ -32,7 +32,7 @@ const actions = {
   getServices (store) {
     http.get('/api/services').then(response => {
       store.commit('setServices', response.data)
-    })
+    }).catch(reject => unauthenticated(reject.data))
   },
   getService (store, id) {
     http.get('/api/services/' + id).then(response => {
@@ -84,9 +84,14 @@ const actions = {
       store.commit('setSchedules', response.data)
     })
   },
+  getSchedule (store, id) {
+    http.get('/api/schedules/' + id)
+      .then(response => {
+        store.commit('setSchedule', response.data)
+      })
+  },
   addSchedule (store, schedule) {
     http.post('/api/schedules/store', schedule).then(response => {
-      console.log(response.data)
     })
   }
 }

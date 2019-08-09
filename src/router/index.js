@@ -8,6 +8,7 @@ import ClientCreate from '@/pages/clients/ClientCreate.vue'
 import ClientShow from '@/pages/clients/ClientShow.vue'
 import ScheduleList from '@/pages/schedules/ScheduleList.vue'
 import ScheduleCreate from '@/pages/schedules/ScheduleCreate.vue'
+import ScheduleShow from '@/pages/schedules/ScheduleShow.vue'
 import ServiceList from '@/pages/services/ServiceList.vue'
 import ServiceCreate from '@/pages/services/ServiceCreate.vue'
 import ServiceShow from '@/pages/services/ServiceShow.vue'
@@ -80,6 +81,12 @@ export default new Router({
       path: '/schedules/create/:horario',
       name: 'ScheduleCreate',
       component: ScheduleCreate,
+      beforeEnter: multiGuard([isLogged])
+    },
+    {
+      path: '/schedules/:id',
+      name: 'ScheduleShow',
+      component: ScheduleShow,
       beforeEnter: multiGuard([isLogged])
     },
     {
