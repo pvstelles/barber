@@ -1,41 +1,29 @@
 <template>
     <div class="row mt-3">
-        <div class="col-12 mt-3" @click="go('/schedules')">
-            <card-menu class="text-center">
-                <font-awesome-icon icon="clock" class="icon-card mt-1"/>
-                <span class="mt-2 btn btn-default"><strong>Agendamento</strong></span>
-            </card-menu>
-        </div>
-        <div class="col-6 mt-3 go-card" @click="go('/users')">
-            <card-menu class="text-center">
-                <font-awesome-icon icon="user-alt" class="icon-card mt-1"/>
-                <span class="mt-2 btn btn-default"><strong>Usuários</strong></span>
-            </card-menu>
-        </div>
-        <div class="col-6 mt-3" @click="go('/clients')">
-            <card-menu class="text-center">
-                <font-awesome-icon icon="id-card-alt" class="icon-card mt-1"/>
-                <span class="mt-2 btn btn-default"><strong>Clientes</strong></span>
-            </card-menu>
-        </div>
-        <div class="col-6 mt-3" @click="go('/services')">
-            <card-menu class="text-center">
-                <font-awesome-icon icon="tasks" class="icon-card mt-1"/>
-                <span class="mt-2 btn btn-default"><strong>Serviços</strong></span>
-            </card-menu>
-        </div>
-        <div class="col-6 mt-3" @click="go('/report')">
-            <card-menu class="text-center">
-                <font-awesome-icon icon="chart-bar" class="icon-card mt-1"/>
-                <span class="mt-2 btn btn-default"><strong>Relatórios</strong></span>
-            </card-menu>
-        </div>
+        <card-menu :class="'text-center mt-3 col-' + m.size"
+                   v-for="(m, index) in menus"
+                   @click.native="go(m.url)"
+                   :key="'menu-' + index">
+            <font-awesome-icon :icon="m.icone" class="icon-card mt-1"/>
+            <span class="mt-2 btn btn-default"><strong>{{ m.titulo }}</strong></span>
+        </card-menu>
     </div>
 </template>
 <script>
 import CardMenu from '@/components/CardMenu.vue'
 export default {
   name: 'home',
+  data () {
+    return {
+      menus: [
+        {url: '/schedules', icone: 'clock', titulo: 'Agendamento', size: '12'},
+        {url: '/users', icone: 'user-alt', titulo: 'Usuários', size: '6'},
+        {url: '/clients', icone: 'id-card-alt', titulo: 'Clientes', size: '6'},
+        {url: '/services', icone: 'tasks', titulo: 'Serviços', size: '6'},
+        {url: '/report', icone: 'chart-bar', titulo: 'Relatórios', size: '6'}
+      ]
+    }
+  },
   components: { CardMenu },
   methods: {
     go (url) {
@@ -47,8 +35,5 @@ export default {
 <style>
 .icon-card {
     font-size: 90px;
-}
-.go-card {
-    cursor: pointer;
 }
 </style>

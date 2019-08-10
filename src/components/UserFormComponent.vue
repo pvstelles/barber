@@ -1,23 +1,22 @@
 <template>
     <span>
-        <form action="">
+        <form>
             <div class="form-group">
-                <label for="name">Nome:</label>
+                <label>Nome:</label>
                 <input type="text" class="form-control" v-model="user.name">
             </div>
             <div class="form-group">
-                <label for="name">Email:</label>
+                <label>Email:</label>
                 <input type="text" class="form-control" v-model="user.email">
             </div>
             <div class="form-group">
-                <label for="name">Senha:</label>
+                <label>Senha:</label>
                 <input type="text" class="form-control" v-model="user.password">
             </div>
             <div class="form-group">
-                <button class="btn btn-primary" @click="addClient">Confirmar</button>
-                <router-link to="/users" class="btn btn-outline-primary">Voltar</router-link>
+                <button class="btn btn-primary" @click.prevent="emitForm">Confirmar</button>
+                <button @click.prevent="btnBack" class="btn btn-outline-primary">Voltar</button>
             </div>
-            <slot></slot>
         </form>
     </span>
 </template>
@@ -25,6 +24,7 @@
 import store from '@/store'
 export default {
   name: 'user-form',
+  props: [ 'action', 'getUser' ],
   data () {
     return {
       user: {
@@ -34,9 +34,22 @@ export default {
       }
     }
   },
+  mounted () {
+    if (this.getUser) {
+      this.user = this.getUser
+    }
+  },
   methods: {
-    addClient () {
-      store.dispatch('addUser', this.user)
+    emitForm () {
+      store.dispatch(this.action, this.user)
+        .then(result => this.btnBack())
+    },
+    btnBack () {
+      if (this.getUser) {
+        store.commit('editableUser', false)
+      } else {
+        this.$router.push('/users')
+      }
     }
   }
 }

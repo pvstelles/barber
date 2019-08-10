@@ -2,10 +2,10 @@ import axios from 'axios'
 import route from '@/router'
 
 const http = axios.create({
-  baseURL: 'http://pvstelles-com-br.umbler.net/',
+  baseURL: 'http://localhost:8000',
   headers: {
     'Accept': 'application/json',
-    'Access-Control-Allow-Origin': '*'
+    'Access-Control-Allow-Origin': 'http://localhost:8080'
   },
   host: '192.168.1.3',
   proxy: {

@@ -1,9 +1,7 @@
 <template>
     <span>
         <h1><strong>Barbeiro (novo)</strong></h1>
-        <user-form>
-
-        </user-form>
+        <user-form action="addUser"/>
     </span>
 </template>
 <script>

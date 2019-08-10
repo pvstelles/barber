@@ -9,10 +9,10 @@
                 <h4>{{ schedule.barber_user.name }}</h4>
                 <p>Serviço: </p>
                 <h4>{{ schedule.service.name }}</h4>
-                <div class="form-group mt-5">
+                    <div class="form-group mt-5">
                     <button class="btn btn-primary">Confirmar Serviço</button>
                     <button class="btn btn-warning mx-2">Faltou</button>
-                    <button class="btn btn-danger">Cancelar</button>
+                    <router-link to="/schedules" class="btn btn-danger">Cancelar</router-link>
                 </div>
             </div>
         </div>

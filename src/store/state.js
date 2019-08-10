@@ -8,6 +8,9 @@ const state = {
   user: {},
   schedules: [],
   schedule: {},
+  editableClient: false,
+  editableService: false,
+  editableUser: false,
   me: ''
 }
 

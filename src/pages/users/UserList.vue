@@ -10,30 +10,17 @@
                 <router-link to="/users/create" class="btn btn-info">Add</router-link>
             </div>
             <div class="col-12">
-                <table class="table table-hover table-striped mt-3">
-                    <thead>
-                    <tr>
-                        <th>Foto</th>
-                        <th>Nome</th>
-                        <th>Ações</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr :key="user.id" v-for="user in getUsers">
-                        <td><img src="@/assets/user.png" alt="" class="img-fluid img-thumbnail rounded-circle img-table"></td>
-                        <td class="item-table">{{ user.name }}</td>
-                        <td class="item-table"><router-link :to="'/users/' + user.id"><font-awesome-icon icon="bars" class="icon-table mt-1"/></router-link></td>
-                    </tr>
-                    </tbody>
-                </table>
+                <user-table :users="getUsers"/>
             </div>
         </div>
     </div>
 </template>
 <script>
+import UserTable from '@/components/UserTableComponent.vue'
 import store from '@/store'
 export default {
   name: 'user-list',
+  components: { UserTable },
   created () {
     store.dispatch('getUsers')
   },

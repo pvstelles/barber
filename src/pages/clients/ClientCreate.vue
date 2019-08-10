@@ -1,9 +1,7 @@
 <template>
     <span>
         <h1><strong>Cliente (novo)</strong></h1>
-        <client-form>
-
-        </client-form>
+        <client-form action="addClient"/>
     </span>
 </template>
 <script>
