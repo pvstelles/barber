@@ -1,6 +1,6 @@
 <template>
     <div class="d-flex align-items-center" style="height: calc(100% - 56px)">
-        <div class="card flex-fill">
+        <div class="card flex-fill mt-5">
             <div class="card-body">
                 <h3 class="card-title text-center">Login</h3>
                 <login-form></login-form>

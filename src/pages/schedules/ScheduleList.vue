@@ -1,22 +1,12 @@
 <template>
     <span>
         <div class="row">
-            <div class="col-12">
-                <h1><strong>Agendamentos</strong></h1>
-            </div>
-            <div class="col-12">
-                <div class="form-group">
-                    <select class="form-control" v-model="userS" @change="getSchedule">
-                        <option :key="user.id" v-for="user in users" :value="user.id">{{ user.name }}</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-12 mt-3">
-                <span class="badge badge-success" style="font-size: 24px;">
-                    {{ schedule_at.print }}
-                <input type="date" class="form-control" v-model="schedule_at.bd" @change="getSchedule">
-                </span>
-            </div>
+            <picker-day/>
+        </div>
+        <div class="row">
+            <schedule-menu></schedule-menu>
+        </div>
+        <div class="row">
             <schedule-info :key="h.hora" v-for="h in schedules" :h="h"></schedule-info>
         </div>
     </span>
@@ -24,6 +14,8 @@
 <script>
 import store from '@/store'
 import ScheduleInfo from '@/components/ScheduleInfoComponent'
+import PickerDay from '@/components/PickerDayComponent'
+import ScheduleMenu from '@/components/ScheduleMenuComponent'
 var moment = require('moment-timezone')
 export default {
   name: 'schedule-list',
@@ -115,7 +107,7 @@ export default {
       }
     }
   },
-  components: { ScheduleInfo },
+  components: { ScheduleInfo, PickerDay, ScheduleMenu },
   computed: {
     dtInicio () {
       return this.dtNow

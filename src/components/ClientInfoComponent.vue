@@ -1,7 +1,7 @@
 <template>
     <span>
         <div class="mx-auto text-center mb-5">
-            <img src="@/assets/user.png" alt="" class="img-fluid img-thumbnail rounded-circle">
+            <img src="@/assets/user.png" class="img-fluid img-thumbnail rounded-circle shadow-lg">
         </div>
         <div class="form-group">
             <label>Nome:</label>
@@ -32,3 +32,8 @@ export default {
   }
 }
 </script>
+<style>
+img {
+    width: 150px;
+}
+</style>

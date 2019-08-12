@@ -15,7 +15,12 @@ import {
   faIdCardAlt,
   faBars,
   faPlusCircle,
-  faMinusCircle
+  faMinusCircle,
+  faEdit,
+  faCalendarAlt,
+  faHome,
+  faCut,
+  faWallet
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
@@ -28,7 +33,12 @@ library.add({
   faIdCardAlt,
   faBars,
   faPlusCircle,
-  faMinusCircle
+  faMinusCircle,
+  faEdit,
+  faCalendarAlt,
+  faHome,
+  faCut,
+  faWallet
 })
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)

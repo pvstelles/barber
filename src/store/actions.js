@@ -21,12 +21,24 @@ const actions = {
     })
   },
   addClient (store, client) {
-    http.post('/api/costumers', client).then(response => {
-      router.push('/clients')
+    return new Promise((resolve, reject) => {
+      http.post('/api/costumers', client).then(response => {
+        router.push('/clients')
+        resolve()
+      }).catch((error) => {
+        reject(error.response.data)
+      })
     })
   },
   editClient (store, client) {
-    http.put('/api/costumers/' + client.id, client).then(response => {
+    return new Promise((resolve, reject) => {
+      http.put('/api/costumers/' + client.id, client)
+        .then(response => {
+          resolve()
+        })
+        .catch(errors => {
+          reject(errors.response.data)
+        })
     })
   },
   getServices (store) {
@@ -40,12 +52,21 @@ const actions = {
     })
   },
   addService (store, service) {
-    http.post('/api/services', service).then(response => {
-      router.push('/services/' + response.data.id)
+    return new Promise((resolve,reject) => {
+      http.post('/api/services', service).then(response => {
+        router.push('/services/' + response.data.id)
+      }).catch(errors => {
+        reject(errors.response.data)
+      })
     })
   },
   editService (store, service) {
-    http.put('/api/services/' + service.id, service).then(response => {
+    return new Promise((resolve,reject) => {
+      http.put('/api/services/' + service.id, service).then(response => {
+        resolve()
+      }).catch(errors => {
+        reject(errors.response.data)
+      })
     })
   },
   destroyService (store, id) {
@@ -65,12 +86,21 @@ const actions = {
     })
   },
   addUser (store, user) {
-    http.post('/api/users', user).then(response => {
-      router.push('/users/' + response.data.id)
+    return new Promise((resolve, reject) => {
+      http.post('/api/users', user).then(response => {
+        resolve()
+      }).catch(errors => {
+        reject(errors.response.data)
+      })
     })
   },
   editUser (store, user) {
-    http.put('/api/users/' + user.id, user).then(response => {
+    return new Promise((resolve, reject) => {
+      http.put('/api/users/' + user.id, user).then(response => {
+        resolve()
+      }).catch(errors => {
+        reject(errors.response.data)
+      })
     })
   },
   getMe (store) {

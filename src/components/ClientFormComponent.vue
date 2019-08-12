@@ -1,20 +1,24 @@
 <template>
     <form>
         <div class="form-group">
-            <label>Nome:</label>
-            <input type="text" class="form-control" v-model="client.name">
+            <label :class="errors.name ? 'text-danger' : ''">Nome:</label>
+            <input type="text" class="form-control" :class="errors.name ? 'border-danger' : ''" v-model="client.name">
+            <span v-if="errors.name" class="text-danger"><small>{{ errors.name }}</small></span>
         </div>
         <div class="form-group">
-            <label>Telefone:</label>
-            <input type="text" class="form-control" v-model="client.phone">
+            <label :class="errors.phone ? 'text-danger' : ''">Telefone:</label>
+            <input type="text" class="form-control" :class="errors.phone ? 'border-danger' : ''" v-model="client.phone">
+            <span v-if="errors.phone" class="text-danger"><small>{{ errors.phone }}</small></span>
+
         </div>
         <div class="form-group">
-            <button class="btn btn-primary" @click.prevent="emitForm">Confirmar</button>
-            <button class="btn btn-outline-primary" @click="btnBack">Voltar</button>
+            <button class="btn btn-dark" @click.prevent="emitForm">Confirmar</button>
+            <button class="btn btn-outline-dark" @click="btnBack">Voltar</button>
         </div>
     </form>
 </template>
 <script>
+import HandleErrorsForm from '@/services/HandlerErroForm.js'
 import store from '@/store'
 export default {
   name: 'client-form',
@@ -24,7 +28,8 @@ export default {
       client: {
         name: '',
         phone: ''
-      }
+      },
+      errors: {}
     }
   },
   mounted () {
@@ -36,7 +41,10 @@ export default {
     emitForm () {
       store.dispatch(this.action, this.client)
         .then(response => {
+          console.log(response)
           this.btnBack()
+        }).catch((reject) => {
+          this.errors = new HandleErrorsForm(reject, 'formClient').handle()
         })
     },
     btnBack () {

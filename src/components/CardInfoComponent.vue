@@ -1,6 +1,6 @@
 <template>
     <div class="col-12">
-        <div class="card">
+        <div class="card shadow">
             <div class="card-body">
                 <slot></slot>
             </div>
@@ -12,3 +12,7 @@ export default {
   name: 'card-info'
 }
 </script>
+<style>
+
+
+</style>

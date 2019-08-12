@@ -5,12 +5,12 @@ const http = axios.create({
   baseURL: 'http://localhost:8000',
   headers: {
     'Accept': 'application/json',
-    'Access-Control-Allow-Origin': 'http://localhost:8080'
+    'Access-Control-Allow-Origin': '*'
   },
   host: '192.168.1.3',
   proxy: {
-      host: '192.168.1.3',
-      port: 3128
+    host: '192.168.1.3',
+    port: 3128
   },
   crossDomain: true
 })

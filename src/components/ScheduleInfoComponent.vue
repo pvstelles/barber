@@ -1,7 +1,9 @@
 <template>
     <div class="col-12" style="vertical-align: top">
         <hr>
-        {{ h.hora }}
+        <div class="float-right">
+            {{ h.hora }}
+        </div>
         <div v-if="h.schedule" class="flex-wrap d-flex align-items-center justify-content-center  ">
             <span>
                 <strong>{{ h.schedule.customer.name }} - {{h.schedule.service.name}}</strong>
@@ -12,7 +14,7 @@
         </div>
         <div class="flex-wrap d-flex align-items-center justify-content-center" v-else>
             <router-link :to="'/schedules/create/' + dtInicio.format('YYYY-MM-DD') + '_' + h.hora">
-                <font-awesome-icon icon="plus-circle" class="text-success ml-5 icone-action"/>
+                <font-awesome-icon icon="plus-circle" class="text-dark ml-5 icone-action"/>
             </router-link>
         </div>
     </div>

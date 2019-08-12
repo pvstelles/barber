@@ -1,6 +1,6 @@
 <template>
-    <nav class="navbar navbar-light bg-light fixed-top">
-        <router-link to="/" class="navbar-brand">Studio JB</router-link>
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+        <router-link to="/" class="navbar-brand">Logo</router-link>
         <div class="float-right">
             <a v-if="isLogged" @click="logout">Sair</a>
         </div>
