@@ -1,6 +1,6 @@
 <template>
-    <div class="col-12 d-flex justify-content-around position-fixed bg-white picker-day">
-        <div class="p-2 rounded-top border-left" v-for="day in days">
+    <div class="col-12 d-flex justify-content-start position-fixed bg-white picker-day px-0">
+        <div class="px-2 py-3 rounded-top border-left" v-for="day in days">
             <div class="shadow border badge py-3 rounded-lg" :class="day.format('YY-MM-DD') === now ? 'badge-info border-dark' : 'badge-dark border-info'">
                 <p><strong class="border-bottom info-day">{{ day.format('DD') }}</strong></p>
                 <p class="info-month">{{ day.format('dddd') }}</p>
@@ -19,7 +19,7 @@ export default {
   },
   mounted () {
     let dtNow = moment()
-    dtNow = dtNow.subtract(5, 'days')
+    dtNow = dtNow.subtract(2, 'days')
     for (let x = 0; x < 11; x++) {
       this.days.push(dtNow.clone())
       dtNow.add(1, 'day')

@@ -1,7 +1,7 @@
 <template>
     <div class="position-fixed schedule-menu bg-white" style="z-index: 9999">
         <div class="row ml-2 p-2 pt-3 shadow rounded-lg bg-white" >
-            <div class="">
+            <div>
                 <div @click.prevent="actionToggle" class="bg-white">
                     <img src="@/assets/user.png" alt="" class="img-fluid img-thumbnail rounded-circle img-table">
                     <br>
@@ -11,7 +11,7 @@
                     <font-awesome-icon icon="calendar-alt"></font-awesome-icon>
                 </div>
             </div>
-            <div class="d-block bg-dark text-white-50 rounded-lg shadow p-3" v-if="menuToggle" style="min-width: 300px">
+            <div class="d-block bg-dark text-white-50 rounded-lg shadow p-3 float-left" v-if="menuToggle" style="width: calc(100% - 100px)">
                 <div class="custom-control custom-switch">
                     <input type="checkbox" class="custom-control-input" id="customSwitch1">
                     <label class="custom-control-label" for="customSwitch1"><strong class="ml-3">Paulo Victor</strong></label>
@@ -60,9 +60,12 @@ export default {
     font-size: 60px;
     margin-left: 25px;
 }
+.custom-switch {
+    width: 100%;
+}
 .custom-switch label {
     width: 100%;
-    font-size: 30px;
+    font-size: 15px;
 }
 .custom-switch label::before {
     width: 2rem !important;

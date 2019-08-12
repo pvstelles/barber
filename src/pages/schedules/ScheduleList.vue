@@ -4,7 +4,7 @@
             <picker-day/>
         </div>
         <div class="row">
-            <schedule-menu></schedule-menu>
+            <schedule-menu/>
         </div>
         <div class="row">
             <schedule-info :key="h.hora" v-for="h in schedules" :h="h"></schedule-info>
@@ -232,6 +232,6 @@ export default {
 </script>
 <style>
 .icone-action {
-    font-size: 50px;
+    font-size: 30px;
 }
 </style>
